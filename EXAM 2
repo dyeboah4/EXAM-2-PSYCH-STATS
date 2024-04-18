@@ -10,11 +10,7 @@ Household_Pulse_data$SOCIAL2 less than hs some hs HS diploma some coll assoc deg
 > xtabs( ~ Household_Pulse_data$SOCIAL2 + Household_Pulse_data$MS)
                             Household_Pulse_data$MS
 Household_Pulse_data$SOCIAL2    NA married widowed divorced separated never
-                           0   477   39339    4551    11585      1300 13900
- lm( ~ Household_Pulse_data$SOCIAL2, Household_Pulse_data$KIDS_12_17Y)
-The other variable I choose as a predictor of loneilness is having Kids 12-17. I predicted that people with Kids from 12-17 will have less lonliness than people without kids. It showed
-that there is a signifant difference in lonelness between people with kids 12-17 and people without. 
-glm( ~ HouseHousehold_Pulse_data$SOCIAL2, Household_Pulse_data$KIDS_12_17Y) 
+                           0   477   39339    4551    11585      1300 13900 
 
 Question 3 : 
 lm(Household_Pulse_data$lonely + Household_Pulse_data$KIDS_5_11Y + Household_Pulse_data$RRACE)
@@ -42,6 +38,7 @@ This is my OLS model for an interaction between loneliness and having Kids 5-11 
 having kids in the house hold is not a statically signifanct predictor for being lonely. However for Race it seems that in the Black and Other population. THese estimates are plausiable 
 it is staticailly signifanct. THe asian population is also statically signifanct however there is an inverse relationship as they have a negative. 
 
+Question 4 
 model_5 <- glm(Household_Pulse_data$lonely ~ Household_Pulse_data$RHISPANIC + Household_Pulse_data$KIDS_12_17Y)
 > summary(model_5)
 
@@ -68,6 +65,7 @@ Number of Fisher Scoring iterations: 2
 My logit model I looked at the variables,  Hispanic Race and Kids in the house hold 5-11 as predictors for loneliness. The Hispanic race varibale was showned to be statically signifacnt for
 predicting lonliness and the Kids in the household 5-11 was not statiscally signifanct. This again proves my hypotheis that having kids in the home makes people feel less lonely among all race groups. 
 
+Question 3 part C 
 anova(model_4,model_5)
 Analysis of Variance Table
 
@@ -81,3 +79,7 @@ Model 2: Household_Pulse_data$lonely ~ Household_Pulse_data$RHISPANIC +
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 This above is my ANOVA test for model 4 and model 5. 
+
+Question 5 
+: tree_mod1 <- rpart(down_severe ~ ., data = Household_Pulse_data$lonely method = "class", cp = 0.01)
+this is my code for the tree model  i used lonely in the House Hold Pulse  as the dataset. 
