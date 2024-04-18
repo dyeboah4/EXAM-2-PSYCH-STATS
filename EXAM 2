@@ -11,4 +11,73 @@ Household_Pulse_data$SOCIAL2 less than hs some hs HS diploma some coll assoc deg
                             Household_Pulse_data$MS
 Household_Pulse_data$SOCIAL2    NA married widowed divorced separated never
                            0   477   39339    4551    11585      1300 13900
-> 
+ lm( ~ Household_Pulse_data$SOCIAL2, Household_Pulse_data$KIDS_12_17Y)
+The other variable I choose as a predictor of loneilness is having Kids 12-17. I predicted that people with Kids from 12-17 will have less lonliness than people without kids. It showed
+that there is a signifant difference in lonelness between people with kids 12-17 and people without. 
+glm( ~ HouseHousehold_Pulse_data$SOCIAL2, Household_Pulse_data$KIDS_12_17Y) 
+
+Question 3 : 
+lm(Household_Pulse_data$lonely + Household_Pulse_data$KIDS_5_11Y + Household_Pulse_data$RRACE)
+model_4 <- lm(Household_Pulse_data$lonely ~ Household_Pulse_data$KIDS_5_11Y + Household_Pulse_data$RRACE)
+summary(model_4) 
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.15522 -0.09647 -0.09647 -0.09647  0.91786 
+
+Coefficients:
+                                                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                               0.096472   0.001331  72.494  < 2e-16 ***
+Household_Pulse_data$KIDS_5_11YYes children 5 - 11 in HH  0.005250   0.003213   1.634  0.10224    
+Household_Pulse_data$RRACEBlack                           0.023795   0.003994   5.957 2.57e-09 ***
+Household_Pulse_data$RRACEAsian                          -0.014329   0.005345  -2.681  0.00735 ** 
+Household_Pulse_data$RRACEOther                           0.053498   0.005019  10.659  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.3018 on 71147 degrees of freedom
+Multiple R-squared:  0.002219,	Adjusted R-squared:  0.002163 
+F-statistic: 39.56 on 4 and 71147 DF,  p-value: < 2.2e-16
+This is my OLS model for an interaction between loneliness and having Kids 5-11 in the householf and Race. It seems that my hypothesis is correct that 
+having kids in the house hold is not a statically signifanct predictor for being lonely. However for Race it seems that in the Black and Other population. THese estimates are plausiable 
+it is staticailly signifanct. THe asian population is also statically signifanct however there is an inverse relationship as they have a negative. 
+
+model_5 <- glm(Household_Pulse_data$lonely ~ Household_Pulse_data$RHISPANIC + Household_Pulse_data$KIDS_12_17Y)
+> summary(model_5)
+
+Call:
+glm(formula = Household_Pulse_data$lonely ~ Household_Pulse_data$RHISPANIC + 
+    Household_Pulse_data$KIDS_12_17Y)
+
+Coefficients:
+                                                           Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                                0.098875   0.001271  77.810  < 2e-16 ***
+Household_Pulse_data$RHISPANICHispanic                     0.023860   0.003938   6.059 1.38e-09 ***
+Household_Pulse_data$KIDS_12_17YYes children 12 - 17 in HH 0.003605   0.003196   1.128    0.259    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for gaussian family taken to be 0.09121974)
+
+    Null deviance: 6493.7  on 71151  degrees of freedom
+Residual deviance: 6490.2  on 71149  degrees of freedom
+AIC: 31553
+
+Number of Fisher Scoring iterations: 2
+
+My logit model I looked at the variables,  Hispanic Race and Kids in the house hold 5-11 as predictors for loneliness. The Hispanic race varibale was showned to be statically signifacnt for
+predicting lonliness and the Kids in the household 5-11 was not statiscally signifanct. This again proves my hypotheis that having kids in the home makes people feel less lonely among all race groups. 
+
+anova(model_4,model_5)
+Analysis of Variance Table
+
+Model 1: Household_Pulse_data$lonely ~ Household_Pulse_data$KIDS_5_11Y + 
+    Household_Pulse_data$RRACE
+Model 2: Household_Pulse_data$lonely ~ Household_Pulse_data$RHISPANIC + 
+    Household_Pulse_data$KIDS_12_17Y
+  Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
+1  71147 6479.3                                  
+2  71149 6490.2 -2   -10.862 59.638 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+This above is my ANOVA test for model 4 and model 5. 
