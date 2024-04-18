@@ -1,0 +1,14 @@
+EXAM 2 
+Question 1 : For my hypothesis test for question 1 I did a hypothesis test by combining everyone who is "always lonely" with everyone who is "usually lonely". With this i got a population
+sample of n=57306 who reported "always lonely" and n=7193 who reported "usually lonely". From there I found the test statitic of the data to be .011220089282. 
+
+QUestion 2 : For this question i ran an xtabs on the people being lonely with martial status and another xtabs on people being lonely with Education levels. 
+ xtabs( ~ Household_Pulse_data$SOCIAL2 + Household_Pulse_data$EEDUC)
+                            Household_Pulse_data$EEDUC
+Household_Pulse_data$SOCIAL2 less than hs some hs HS diploma some coll assoc deg bach deg adv deg
+                           0          585    1282      10094     15415      7614    19137   17025
+> xtabs( ~ Household_Pulse_data$SOCIAL2 + Household_Pulse_data$MS)
+                            Household_Pulse_data$MS
+Household_Pulse_data$SOCIAL2    NA married widowed divorced separated never
+                           0   477   39339    4551    11585      1300 13900
+> 
